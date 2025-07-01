@@ -9,6 +9,7 @@ logging.basicConfig(
 
 logger = logging.getLogger("app")
 
+
 def main() -> None:
     """
     Main function to clean up old Docker images and containers.
