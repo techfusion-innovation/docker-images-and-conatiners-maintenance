@@ -9,13 +9,18 @@ logging.basicConfig(
 
 logger = logging.getLogger("app")
 
-def main():
+def main() -> None:
     """
     Main function to clean up old Docker images and containers.
     """
     logger.info("Starting cleanup of old Docker images and containers.")
-    clean_old_images()
+    logger.info("Cleaning old containers...")
     clean_old_containers()
+    logger.info("Old containers cleaned successfully.")
+    logger.info("Cleaning old images...")
+    clean_old_images()
+    logger.info("Old images cleaned successfully.")
+    logger.info("Cleanup completed successfully.")
 
 
 if __name__ == "__main__":
