@@ -1,4 +1,8 @@
+import logging
+
 import docker
+
+logger = logging.getLogger(__name__)
 
 def clean_old_containers() -> None:
     """
@@ -11,6 +15,7 @@ def clean_old_containers() -> None:
         if container.status != 'running':
             try:
                 container.remove(force=True)
-                print(f"Removed container: {container.name}")
+                logger.info(f"Removed container: {container.name}")
             except docker.errors.APIError as e:
-                print(f"Error removing container {container.name}: {e}")
+                logger.error(f"Failed to remove container {container.name}")
+                logger.exception(e)
